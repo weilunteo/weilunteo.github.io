@@ -18,20 +18,23 @@
   
 </table>
 
-<tr>
+<br>
 
 <form>
   Name:
   <input type='text' name=name>
-  <tr>
+  <br>
  
   Relationship Status:
-  <input type='radio' name=status>
-  <tr>
+  <input type='radio' name=status value="single">Single
+  <input type='radio' name=status vaue"taken">Taken
+  <br>
   
   Favourite Fruits:
-  <input type='checkbox'>
-  <tr>
+  <input name="fruit[]" type="checkbox" value="pineapple"/>Pineapple
+  <input name="fruit[]" type="checkbox" value="watermelon"/>Watermelon    
+  <input name="fruit[]" type="checkbox" value="apple" />Apple
+  <br>
   
   <input type='submit'>
   
