@@ -1,0 +1,80 @@
+/* ============== Basic Code ==============*/
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    line-height: 1.15;
+}
+
+body{
+    margin:9;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6c6c6c;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+
+/* ============= Header Section ============== */
+
+.about-img{
+    margin-left: 700px;  
+    /* right: 60px; */
+
+}
+
+.btn{
+    padding: 10px 25px ;
+    border-radius: 100px;
+}
+
+.btn-white{
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn-blue{
+    color:#ffffff;
+    border: 2.4px solid #ffffff;
+}
+
+
+/* ================== Navigation Menu ==================  */
+
+*{
+    color: #0bceaf;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover{
+    color: #078571;
+    text-decoration: underline;
+}
+
+/* .navbar-light{
+    display: none;
+} */
+
+.navbar-light .navbar-nav .nav-link{
+    padding: 25px 10px;
+    color: #343a40;
+    font-weight: 500;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #0BCEAF;
+}
+
+@media (max-width: 991.98px){
+  .navbar-light .navbar-nav .nav-link {
+    padding: 10px 0;
+}
+}
