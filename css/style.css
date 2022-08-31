@@ -2,6 +2,7 @@
 
 *{
     box-sizing: border-box;
+    margin: 0;
 }
 
 html{
@@ -16,15 +17,14 @@ body{
     line-height: 1.5;
     color: #6c6c6c;
     text-align: left;
-    background-color: #ffffff;
+    background-color: lightgrey;
 }
 
 
 /* ============= Header Section ============== */
 
-.about-img{
-    margin-left: 700px;  
-    /* right: 60px; */
+.about-img{ 
+    margin-top: 0px;
 
 }
 
@@ -43,17 +43,51 @@ body{
     border: 2.4px solid #ffffff;
 }
 
+body, html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/sky.jpg");
+
+  /* Set a specific height */
+  height: 100%;
+  margin-top: 75px;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in on the left of the image */
+.hero-text {
+  text-align: left;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.sizename{
+    font-size: 40px;
+    font-family: chalkduster;
+}
+
 
 /* ================== Navigation Menu ==================  */
 
 *{
-    color: #0bceaf;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover{
-    color: #078571;
+    color: cornflowerblue;
     text-decoration: underline;
 }
 
@@ -70,7 +104,7 @@ a:hover{
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
-  color: #0BCEAF;
+  color: cornflowerblue;
 }
 
 @media (max-width: 991.98px){
@@ -78,3 +112,39 @@ a:hover{
     padding: 10px 0;
 }
 }
+
+/* ====== Typed js ========== */
+.text-slider-items { 
+
+    display: none;
+
+} 
+
+.text-slider{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    color: lightgrey;
+}
+
+
+/*===================== Progress Bar ====================*/
+
+.progress {
+    border-radius: 10px;
+  }
+  
+  .progress .progress-bar {
+    width: 0px;
+    border-radius: 10px;
+    transition: 2s;
+  }
+
+
+  /* ========================== Contact Us ========================*/
+
+.contact-form .help-block ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
