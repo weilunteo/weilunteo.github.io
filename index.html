@@ -24,33 +24,44 @@
 <!-- CSS Link-->
 <link rel="stylesheet" href="/css/style.css">
 
+
+<!--==================== UNICONS ====================-->
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        
+<!--==================== SWIPER CSS ====================-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.css">
+
 </head>
 <body>
 
 <!-- ===================== Navigation Menu =========================== -->
 
-<nav class="navbar fixed-top shadow-sm navbar-expand-md bg-light navbar-light py-3 py-lg-0 px-lg-5">
-  <a href="index.html" class="navbar-brand ml-lg-8">
-    <img src= "images/logo.png" width="70" height="70" alt="">
-  </a>
 
-  <!-- Button for responsive device --->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3 py-lg-0 px-lg-5">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html"><img src= "images/logo.png" width="70" height="70" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-  <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-    <div class="navbar-nav m-auto py-0">
-      <a href="#about" class="nav-item nav-link">About</a>
-      <a href="#skill" class="nav-item nav-link">Skills</a>
-      <a href="#experience" class="nav-item nav-link">Experience</a>
-      <a href="#projects" class="nav-item nav-link">Projects</a>
-      <a href="#blog" class="nav-item nav-link">Blog</a>
-      <a href="#contact" class="nav-item nav-link">Contact</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#experience">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
+        </li>
+      </ul>
+
     </div>
-    
   </div>
-
 </nav>
 
 <!-- ========================= Header Section ========================= -->
@@ -59,10 +70,10 @@
   <div class="hero-text">
     <h1 class="sizename">Hello, I'm Wei Lun.</h1>
     <!-- Typed Text -->
-    <span class="text-slider-items"> Web Developer, Data Analyst, Data Scientist</span>
+    <span class="text-slider-items">Undergraduate, Aspiring Data Scientist</span>
     <strong class="text-slider"></strong> 
       <div class="row pt-5">
-          <p>I built this portfolio website to showcase my work, skills and interest.
+          <p>I built this portfolio website to showcase my work, skills and interests.
             <br>Click the button below to get started!
           </p>
         </div>
@@ -85,7 +96,6 @@
 
 
   </div>
-</div>
 
 
 <!-- ===================== About ================================ -->
@@ -94,99 +104,248 @@
   <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
           <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About<h1>
-          <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+          <h1 class="position-absolute text-uppercase text-primary" style="font-family:chalkduster;">About Me</h1>
       </div>
       <div class="row align-items-center">
           <div class="col-sm-3">
               <img class="img-fluid rounded w-60" src="images/profile.jpg" alt="">
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 mx-4">
               <h3 class="mb-4">Nice to meet you!</h3>
-              <p>I am currently an Information Systems student at Singapore Management University, with a strong passion in the aviation industry.</p>
+              <p style="font-size:large;">I am currently an Information Systems student at Singapore Management University, with a strong passion in the aviation industry.</p>
 
-              <p>As a driven individual with a strong-work ethic, I enjoy taking on new challenges and coming up with solutions to solve them. You can also consider me as someone with a great sense of humour.</p>
+              <p style="font-size:large;">As a driven individual with a strong-work ethic, I enjoy taking on new challenges and coming up with solutions to solve them. You can also consider me as someone with a great sense of humour.</p>
                 
-            </p>Outside of school and work, you can either find me doing travelling, working out or munching on something yummy!</p>
-
-
-
+            <p style="font-size:large;">Outside of school and work, you can either find me hitting the gym, munching on something yummy or travelling around the world!</p>
+            <br>
+            <h5 style="font-family:'Courier New', Courier, monospace;">Technical skills: Python, SQL, Pandas, HTML, CSS, JavaScript</h5>
           </div>
       </div>
   </div>
 </div>
 
-    <!-- Skill Start -->
-    <div class="container-fluid py-5" id="skill">
-      <div class="container">
-          <div class="position-relative d-flex align-items-center justify-content-center">
-              <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
-              <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
-          </div>
-          <div class="row align-items-center">
-              <div class="col-md-6">
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">HTML</h6>
-                          <h6 class="font-weight-bold">95%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">CSS</h6>
-                          <h6 class="font-weight-bold">85%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">PHP</h6>
-                          <h6 class="font-weight-bold">90%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">Javascript</h6>
-                          <h6 class="font-weight-bold">90%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">Python</h6>
-                          <h6 class="font-weight-bold">95%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-                  <div class="skill mb-4">
-                      <div class="d-flex justify-content-between">
-                          <h6 class="font-weight-bold">Pandas</h6>
-                          <h6 class="font-weight-bold">85%</h6>
-                      </div>
-                      <div class="progress">
-                          <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+  <!-- ==================== EXPERIENCE ======================= -->
+
+  <div class="container-fluid py-5" id="experience">
+    <div class="container mt-3">
+
+      <div class="position-relative d-flex align-items-center justify-content-center">
+        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Experience</h1>
+        <h1 class="position-absolute text-uppercase text-primary" style="font-family:chalkduster;">My Experience</h1>
       </div>
+
+        <div class="qualification__container">
+            <div class="qualification__tabs">
+                <div class="qualification__button button--flex qualification__active" data-target='#education'>
+                    <i class="uil uil-graduation-cap qualification__icon"></i>Education
+                </div>
+
+                <div class="qualification__button button--flex" data-target='#work'>
+                    <i class="uil uil-briefcase-alt qualification__icon"></i>Work
+                </div>
+            </div>
+
+          <div class="qualification__sections mt-5">
+              <!--==================== EXPERIENCE CONTENT 1 ====================-->
+              <div class="qualification__content qualification__active" data-content id="education">
+                  <!--==================== Education 1 ====================-->
+                  <div class="qualification__data">
+                      <div>
+                          <h3 class="qualification__title">Information Systems</h3>
+                          <h3 class="qualification__title">(Business Analytics & Digitalisation and Cloud Solutions)</h3>
+                          <span class="qualification__subtitle">Singapore Management University</span>
+                          <div class="qualification__calender">
+                              <i class="uil uil-calendar-alt"></i>
+                              2021-Present
+                          </div>
+                      </div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+                    </div>
+
+                    <!--==================== Education 2 ====================-->
+                    <div class="qualification__data">
+                        <div></div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+
+                        <div>
+                            <h3 class="qualification__title">A Levels</h3>
+                            <span class="qualification__subtitle">Dunman High School</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                2019-2020
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--==================== Education 3 ====================-->
+                    <div class="qualification__data">
+                        <div>
+                            <h3 class="qualification__title">O Levels</h3>
+                            <span class="qualification__subtitle">Temasek Secondary School</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                2015-2018
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+                    </div>
+
+                    <!--==================== Education 4 ====================-->
+                    <div class="qualification__data">
+                        <div></div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+
+                        <div>
+                            <h3 class="qualification__title">PSLE</h3>
+                            <span class="qualification__subtitle">Tao Nan School</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                2009-2014
+                            </div>
+                        </div>                               
+                    </div>
+
+                </div>
+
+                <!--==================== EXPERIENCE CONTENT 2 ====================-->
+                <div class="qualification__content" data-content id="work">
+                    <!--==================== Work 1 ====================-->
+                    <div class="qualification__data">
+                        <div>
+                            <h3 class="qualification__title">Ops-Tech Integration Intern</h3>
+                            <span class="qualification__subtitle">Civil Service College</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                May-Jul 2022
+                            </div>
+                            <span style="font-size: small; font-weight: 500;">
+                              Skills: HTML/CSS, Project Management, Agile Methodology
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+                    </div>
+
+                    <!--==================== Work 2 ====================-->
+                    <div class="qualification__data">
+                        <div></div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+
+                        <div>
+                            <h3 class="qualification__title">Tax Processor</h3>
+                            <span class="qualification__subtitle">KPMG Singapore</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                Jan-Jun 2021
+                            </div>
+                            <span style="font-size: small; font-weight: 500;">Skills: Personal Tax, Tax Equalisation Settlements</span>
+                        </div>
+                    </div>
+
+                    <!--==================== Work 3 ====================-->
+                    <div class="qualification__data">
+                        <div>
+                            <h3 class="qualification__title">Private Tutor</h3>
+                            <span class="qualification__subtitle">Freelance</span>
+                            <div class="qualification__calender">
+                                <i class="uil uil-calendar-alt"></i>
+                                Apr 2021 - Present
+                            </div>
+                            <span style="font-size: small; font-weight: 500;">Skills: Chemistry, Mathematics, Economics</span>
+                        </div>
+
+                        <div>
+                            <span class="qualification__rounder"></span>
+                            <span class="qualification__line"></span>
+                        </div>
+                    </div>
+                    
+            
+                </div>
+            </div>
+        </div>
+
+
   </div>
-  <!-- Skill End -->
+  </div>
+
+  <!-- ========================= PROJECTS =========================== -->
+
+  <div class="container-fluid py-5" id="projects">
+    <div class="container mt-3">
+
+      <div class="position-relative d-flex align-items-center justify-content-center">
+          <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Projects<h1>
+          <h1 class="position-absolute text-uppercase text-primary" style="font-family:chalkduster;">My Projects</h1>
+      </div>
+
+        <!-- Portfolio Gallery Grid -->
+      <div class="row">
+        <div class="column">
+          <div class=" col-sm-12 content">
+            <img src="images/robot.png" alt="" style="width:100%">
+            <h3>Bot Detection on Online Auction Platform</h3>
+            <p>Participated in Facebook Recruitment Prediction Competition hosted on Kaggle. Analysed more than 7 million online auction bids data to determine if bid was executed by a human or a bot. Generated time series and entropy features, built ensemble models in order to get the optimal prediction AUC score of 0.86948 on the Public Leaderboard (scored by hidden test data).</p>
+            <a href="#" target="_blank" class="btn btn-outline-primary mr-8" >Check it Out</a>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="col-sm-12 content">
+          <img src="images/moha.png" alt="" style="width:100%">
+            <h3>Aging Well Singapore: Our Mission to Explore</h3>
+            <p>Partnered with Ministry of Hope Affairs in their data science research project 'Senior Active Force SG'. Used Tableau and Pandas to analyse data from surveys with 300 seniors to understand their experience of aging and uncover persona archetypes of attitudes and mindsets towards aging. Discovered correlations between mindsets, attitudes and factors like demographics, social connectedness and life stages.</p>
+            <a href="#" target="_blank" class="btn btn-outline-primary mr-8">Check it Out</a>
+          </div>
+        </div>
 
 
+      </div>
+
+  
+
+  <!-- <div class="column">
+    <div class="content">
+    <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
+      <h3>My Work</h3>
+      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="content">
+    <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">
+      <h3>My Work</h3>
+      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+    </div>
+  </div> -->
+
+<!-- END GRID -->
+</div>
+</div>
 
 
  <!-- ==================== CONTACT ====================-->
@@ -195,11 +354,11 @@
   <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
           <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
-          <h1 class="position-absolute text-uppercase text-primary">Contact Me</h1>
+          <h1 class="position-absolute text-uppercase text-primary" style="font-family:chalkduster;">Contact Me</h1>
       </div>
       <div class="row justify-content-center">
           <div class="col-lg-8">
-              <div class="contact-form text-center">
+              <div class="contact-form text-center" action="action_page.php">
                   <div id="success"></div>
                   <form name="sentMessage" id="contactForm" novalidate="novalidate">
                       <div class="form-row">
@@ -238,17 +397,29 @@
 <!-- Contact End -->
 
 
+<!-- Back to Top Button -->
+<div class='container-fluid'>
+<p class="text-center">
+  <a href="#">Back To Top</a>
+</p>
+
+</div>
+
+<!-- Back to Top End -->
+
 
 <!-- ======================= Footer ====================== -->
 <!-- Footer Start -->
+
 <div class="container-fluid bg-dark text-white mt-5 py-1 px-sm-1 px-md-5">
   <div class="container text-center py-5">
       <div class="d-flex justify-content-center mb-4">
           <!-- <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
           <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a> -->
-          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/wei-lun-teo/"><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-light btn-social" href="https://www.instagram.com/iamweilun/"><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/wei-lun-teo/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-light btn-social" href="https://www.instagram.com/iamweilun/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+
       <div class="d-flex justify-content-center mb-3">
           <div class="text-white">LinkedIn</div>
           <span class="px-2">|</span>
@@ -264,6 +435,10 @@
 </div>
 <!-- Footer End -->
 
+
+</body>
+</html>
+
   <!-- JS code -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -274,9 +449,11 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js"></script>
 
-  <script> 
-
+  <script src="/js/main.js"></script>
+  
+<script>
     if ($(".text-slider").length == 1) { 
         var typed_strings = $(".text-slider-items").text(); 
         var typed = new Typed(".text-slider", { 
@@ -288,6 +465,4 @@
         }); 
     } 
     
-    </script> 
-</body>
-</html>
+</script> 

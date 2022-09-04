@@ -80,20 +80,10 @@ body, html {
 
 
 /* ================== Navigation Menu ==================  */
-
-*{
-    text-decoration: none;
-    background-color: transparent;
-}
-
-a:hover{
+li:hover{
     color: cornflowerblue;
     text-decoration: underline;
 }
-
-/* .navbar-light{
-    display: none;
-} */
 
 .navbar-light .navbar-nav .nav-link{
     padding: 25px 10px;
@@ -102,12 +92,7 @@ a:hover{
     outline: none;
 }
 
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active {
-  color: cornflowerblue;
-}
-
-@media (max-width: 991.98px){
+@media (max-width: 800px){
   .navbar-light .navbar-nav .nav-link {
     padding: 10px 0;
 }
@@ -125,23 +110,120 @@ a:hover{
     font-family: 'Courier New', Courier, monospace;
     font-weight: 500;
     color: lightgrey;
+
 }
 
+/* ================ Experience =============== */
 
-/*===================== Progress Bar ====================*/
+.qualification__tabs{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1px;
+}
 
-.progress {
-    border-radius: 10px;
+.qualification__button{
+    font-size:large;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.qualification__button:hover{
+    color: cornflowerblue;
+}
+
+.qualification__icon{
+    font-size: 1.8rem;
+    margin-right: 25;
+}
+
+.qualification__data{
+    justify-content:right;
+    display:grid;
+    grid-template-columns: 1fr max-content 1fr;
+    column-gap: 4rem;
+}
+
+.qualification__title{
+    font-size:medium;
+    font-weight: bold;
+}
+
+.qualification__subtitle{
+    display: inline-block;
+    font-size: medium;
+    margin-bottom:5px;
+}
+
+.qualification__calendar{
+    font-size: smaller;
+    color: var(--text-color-light);
+}
+
+.qualification__rounder{
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: cornflowerblue;
+    border-radius: 50%;
+}
+
+.qualification__line{
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: cornflowerblue;
+    transform: translate(6px, -7px);
+}
+
+.qualification [data-content]{
+    display: none;
+}
+
+.qualification__active[data-content]{
+    display: block;
+}
+
+.qualification__button.qualification__active{
+    color: cornflowerblue;
+}
+/* ============= Projects ============== */
+
+
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 35%;
   }
   
-  .progress .progress-bar {
-    width: 0px;
-    border-radius: 10px;
-    transition: 2s;
+  /* Clear floats after rows */ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }
+  
+  /* Content */
+  .content {
+    background-color: white;
+    padding: 10px;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 900px) {
+    .column {
+      width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  } 
 
 
-  /* ========================== Contact Us ========================*/
+  /* ========================== Contact  ========================*/
 
 .contact-form .help-block ul {
     margin: 0;
