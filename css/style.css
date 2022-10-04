@@ -81,8 +81,8 @@ body, html {
 
 /* ================== Navigation Menu ==================  */
 li:hover{
-    color: cornflowerblue;
     text-decoration: underline;
+    color: cornflowerblue;
 }
 
 .navbar-light .navbar-nav .nav-link{
@@ -90,6 +90,11 @@ li:hover{
     color: #343a40;
     font-weight: 500;
     outline: none;
+}
+
+.navbar-nav{
+    display: flex;
+    align-items: right;
 }
 
 @media (max-width: 800px){
@@ -112,6 +117,24 @@ li:hover{
     color: lightgrey;
 
 }
+
+
+/* ================ About =============== */
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+
+.profilephoto:hover{
+    opacity: 0.9;
+}
+
+  
 
 /* ================ Experience =============== */
 
