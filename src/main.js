@@ -439,10 +439,10 @@ sofa.position.set(-3.0,0.12,1.5);
 sofa.rotation.y=Math.PI/2;
 hotspot(sofa,"skills","Skills");
 // Clock
-const cf=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.04,24),M.cream);cf.position.set(-1.8,3.0,-2.9);cf.rotation.x=Math.PI/2;room.add(cf);
-const cr2=new THREE.Mesh(new THREE.TorusGeometry(0.3,0.025,8,24),M.woodDk);cr2.position.set(-1.8,3.0,-2.88);cr2.rotation.x=Math.PI/2;room.add(cr2);
-box(0.02,0.2,0.01,M.black,[-1.8,3.05,-2.86]);
-box(0.015,0.14,0.01,M.black,[-1.78,3.0,-2.86]).rotation.z=Math.PI/3;
+const cf=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.04,24),M.cream);cf.position.set(-1.8,3.0,-2.85);cf.rotation.x=Math.PI/2;room.add(cf);
+const cr2=new THREE.Mesh(new THREE.TorusGeometry(0.3,0.025,8,24),M.woodDk);cr2.position.set(-1.8,3.0,-2.83);cr2.rotation.x=Math.PI/2;room.add(cr2);
+box(0.02,0.2,0.01,M.black,[-1.8,3.05,-2.81]);
+box(0.015,0.14,0.01,M.black,[-1.78,3.0,-2.81]).rotation.z=Math.PI/3;
 // Hanging shelf
 box(1.2,0.04,0.25,M.wood,[0,3.2,-2.9]);
 cyl(0.04,0.05,0.18,M.green,[-0.3,3.32,-2.85]);
