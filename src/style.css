@@ -149,7 +149,7 @@ canvas {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%);
   z-index: 200;
   background: var(--modal-bg);
   border: 2px solid var(--wood-dark);

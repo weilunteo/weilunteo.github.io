@@ -484,14 +484,20 @@ function toggleTheme(){
 const modals={about:document.querySelector(".modal.about"),experience:document.querySelector(".modal.experience"),education:document.querySelector(".modal.education"),skills:document.querySelector(".modal.skills"),fun:document.querySelector(".modal.fun"),contact:document.querySelector(".modal.contact"),photos:document.querySelector(".modal.photos")};
 const overlay=document.querySelector(".overlay");
 let isModalOpen=true;
-function showModal(cls){const m=modals[cls];if(!m)return;m.style.display="block";overlay.style.display="block";isModalOpen=true;controls.enabled=false;gsap.fromTo(overlay,{opacity:0},{opacity:1,duration:0.35});gsap.fromTo(m,{opacity:0,scale:0},{opacity:1,scale:1,duration:0.45,ease:"back.out(2)"});}
+function showModal(cls){const m=modals[cls];if(!m)return;
+  m.style.display="block";overlay.style.display="block";
+  isModalOpen=true;controls.enabled=false;
+  modalOpenedAt=Date.now();
+  gsap.fromTo(overlay,{opacity:0},{opacity:1,duration:0.35});
+  gsap.fromTo(m,{opacity:0,scale:0},{opacity:1,scale:1,duration:0.45,ease:"back.out(2)"});}
 function hideModal(m){isModalOpen=false;controls.enabled=true;
-  // Reset hover state so raycaster can pick up new hovers
   if(hovered){hover(hovered,false);hovered=null;}
   document.body.style.cursor="default";
-  gsap.to(overlay,{opacity:0,duration:0.25});gsap.to(m,{opacity:0,scale:0,duration:0.35,ease:"back.in(2)",onComplete:()=>{m.style.display="none";overlay.style.display="none";}});}
-overlay.addEventListener("click",()=>{const m=document.querySelector('.modal[style*="display: block"]');if(m)hideModal(m);});
-document.querySelectorAll(".modal-exit-button").forEach(b=>b.addEventListener("click",e=>hideModal(e.target.closest(".modal"))));
+  gsap.to(overlay,{opacity:0,duration:0.25});
+  gsap.to(m,{opacity:0,scale:0,duration:0.35,ease:"back.in(2)",onComplete:()=>{m.style.display="none";overlay.style.display="none";}});}
+let modalOpenedAt=0;
+overlay.addEventListener("click",()=>{if(Date.now()-modalOpenedAt<400)return;const m=document.querySelector('.modal[style*="display: block"]');if(m)hideModal(m);});
+document.querySelectorAll(".modal-exit-button").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();if(Date.now()-modalOpenedAt<400)return;hideModal(e.target.closest(".modal"));}));
 
 // ─── Raycaster ───
 const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-10,-10);
