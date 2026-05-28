@@ -344,7 +344,7 @@ box(0.3,0.03,0.03,M.metal,[0,0.55,0.05],bikeFrame);
 bikeFrame.position.set(-0.5,0.0,-0.4);bikeFrame.rotation.y=0.3;
 gear.add(bikeFrame);
 gear.position.set(2.5,0.12,-1.8);
-hotspot(gear,"fun","For Fun");
+hotspot(gear,"fun","Simple Joys");
 
 // ─── DOG (Skills) — sleeping curled up ───
 const dog=new THREE.Group();
@@ -484,21 +484,14 @@ function toggleTheme(){
 const modals={about:document.querySelector(".modal.about"),experience:document.querySelector(".modal.experience"),education:document.querySelector(".modal.education"),skills:document.querySelector(".modal.skills"),fun:document.querySelector(".modal.fun"),contact:document.querySelector(".modal.contact"),photos:document.querySelector(".modal.photos")};
 const overlay=document.querySelector(".overlay");
 let isModalOpen=true;
-function showModal(cls){const m=modals[cls];if(!m)return;
-  m.style.display="block";overlay.style.display="block";
-  isModalOpen=true;controls.enabled=false;
-  modalOpenedAt=Date.now();
-  gsap.fromTo(overlay,{opacity:0},{opacity:1,duration:0.35});
-  gsap.fromTo(m,{opacity:0,scale:0},{opacity:1,scale:1,duration:0.45,ease:"back.out(2)"});}
+function showModal(cls){const m=modals[cls];if(!m)return;m.style.display="block";overlay.style.display="block";isModalOpen=true;controls.enabled=false;
+  overlay.style.pointerEvents="none";
+  setTimeout(()=>{overlay.style.pointerEvents="auto";},100);
+  gsap.fromTo(overlay,{opacity:0},{opacity:1,duration:0.35});gsap.fromTo(m,{opacity:0,css:{transform:"translate(-50%,-50%) scale(0)"}},{opacity:1,css:{transform:"translate(-50%,-50%) scale(1)"},duration:0.45,ease:"back.out(2)"});}
 function hideModal(m){isModalOpen=false;controls.enabled=true;
   if(hovered){hover(hovered,false);hovered=null;}
   document.body.style.cursor="default";
-  gsap.to(overlay,{opacity:0,duration:0.25});
-  gsap.to(m,{opacity:0,scale:0,duration:0.35,ease:"back.in(2)",onComplete:()=>{m.style.display="none";overlay.style.display="none";}});}
-let modalOpenedAt=0;
-overlay.addEventListener("click",()=>{if(Date.now()-modalOpenedAt<400)return;const m=document.querySelector('.modal[style*="display: block"]');if(m)hideModal(m);});
-document.querySelectorAll(".modal-exit-button").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();if(Date.now()-modalOpenedAt<400)return;hideModal(e.target.closest(".modal"));}));
-
+  gsap.to(overlay,{opacity:0,duration:0.25});gsap.to(m,{opacity:0,css:{transform:"translate(-50%,-50%) scale(0)"},duration:0.35,ease:"back.in(2)",onComplete:()=>{m.style.display="none";overlay.style.display="none";}});}
 // ─── Raycaster ───
 const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-10,-10);
 let hovered=null;
@@ -519,6 +512,31 @@ enterBtn.addEventListener("click",()=>{
   gsap.to(enterOv,{opacity:0,duration:0.7,ease:"power2.inOut",onComplete:()=>{enterOv.style.display="none";isModalOpen=false;controls.enabled=true;
     const ms=Array.from(hitMap.values()).map(d=>d.mesh);ms.forEach(m=>m.scale.set(0,0,0));
     ms.forEach((m,i)=>gsap.to(m.scale,{x:1,y:1,z:1,duration:0.5,delay:0.12*i,ease:"back.out(1.7)"}));
+    ms.forEach((m, i) => {
+      gsap.fromTo(m.scale,
+        { x: 0, y: 0, z: 0 },
+{
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.5,
+          delay: 0.12 * i,
+          ease: "back.out(1.7)",
+          onComplete: () => {
+            // one soft "settle bounce"
+            gsap.to(m.scale, {
+              x: 1.03,
+              y: 1.03,
+              z: 1.03,
+              duration: 0.25,
+              ease: "sine.out",
+              yoyo: true,
+              repeat: 1
+            });
+          }
+        }
+      );
+    });
   }});
 });
 
@@ -537,3 +555,11 @@ const clock=new THREE.Clock();
   }
   renderer.render(scene,camera);requestAnimationFrame(render);
 })();
+
+document.querySelectorAll(".modal-exit-button").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const modal = e.target.closest(".modal");
+    if (!modal) return;
+    hideModal(modal);
+  });
+});
