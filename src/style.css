@@ -228,6 +228,15 @@ canvas {
   padding-right: 36px;
 }
 
+.exp-company {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--wood);
+  font-style: italic;
+  margin: 3px 0 6px;
+}
+
 /* Timeline */
 .timeline {
   border-left: 2px solid var(--wood);
