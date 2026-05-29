@@ -154,21 +154,20 @@ canvas {
   background: var(--modal-bg);
   border: 2px solid var(--wood-dark);
   border-radius: 16px;
-  padding: 32px 36px;
   max-width: 520px;
   width: calc(100vw - 40px);
   max-height: 80vh;
-  overflow-y: auto;
   box-shadow: 0 12px 40px var(--shadow);
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 
-.modal h2 {
-  font-size: 24px;
-  color: var(--cottage-red);
-  margin-bottom: 16px;
-  letter-spacing: 0.02em;
+.modal-content {
+  padding: 32px 36px;
+  max-height: calc(80vh - 4px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal h3 {
@@ -213,10 +212,20 @@ canvas {
   align-items: center;
   justify-content: center;
   transition: transform 0.2s;
+  z-index: 10;
+  box-shadow: 0 2px 6px var(--shadow);
 }
 
 .modal-exit-button:hover {
   transform: scale(1.2);
+}
+
+.modal h2 {
+  font-size: 24px;
+  color: var(--cottage-red);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+  padding-right: 36px;
 }
 
 /* Timeline */
@@ -293,9 +302,13 @@ canvas {
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
   .modal {
-    padding: 24px 20px;
     max-width: calc(100vw - 24px);
     max-height: 75vh;
+  }
+
+  .modal-content {
+    padding: 24px 20px;
+    max-height: calc(75vh - 4px);
   }
 
   .ui-controls {
@@ -343,7 +356,7 @@ canvas {
     font-size: 18px;
   }
 
-  .modal {
+  .modal-content {
     padding: 18px 16px;
   }
 }
@@ -446,4 +459,174 @@ canvas {
   background: var(--cottage-red);
   color: var(--cream);
   transform: scale(1.12);
+}
+
+/* ─── Modal When (experience dates) ─── */
+.modal-when {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--wood-dark);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ─── Experience cards ─── */
+.exp-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exp-card {
+  padding: 14px 16px;
+  border: 1px solid var(--wood);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.exp-card .exp-when {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--wood-dark);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.exp-card strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.exp-card p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.exp-card ul {
+  padding-left: 16px;
+  margin: 0 0 8px;
+}
+
+.exp-card li {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 3px;
+  color: var(--ink);
+}
+
+.exp-card .tags {
+  margin: 0;
+}
+
+/* ─── Project Cards ─── */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.project-card {
+  padding: 16px;
+  border: 1px solid var(--wood);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.project-card h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  color: var(--cottage-red);
+}
+
+.project-card p {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.project-card .tags {
+  margin-bottom: 8px;
+}
+
+.project-card a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cottage-red);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--cottage-red);
+}
+
+.project-card a:hover {
+  color: var(--accent);
+}
+
+/* ─── Credly link in skills ─── */
+.credly-link {
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 6px;
+  color: var(--cottage-red);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--cottage-red);
+}
+
+.credly-link:hover {
+  color: var(--accent);
+}
+
+.credly-tags a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.credly-tags a span {
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.credly-tags a:hover span {
+  background: var(--cottage-red);
+  color: var(--cream);
+  border-color: var(--cottage-red);
+}
+
+/* ─── Polaroid strip ─── */
+.polaroid-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.polaroid {
+  flex-shrink: 0;
+  width: 120px;
+  background: #fff;
+  border: 1px solid var(--wood);
+  border-radius: 4px;
+  padding: 6px 6px 4px;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroid span {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: var(--wood-dark);
+  font-style: italic;
 }

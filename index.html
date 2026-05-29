@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 />
   <title>Megan Teo</title>
-  <script type="module" crossorigin src="/assets/index-DNHhnGeR.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-ChdfKXMi.css">
+  <script type="module" crossorigin src="/assets/index-Cu78HcEa.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C3HGA7yO.css">
 </head>
 <body class="summer-theme">
   <!-- Enter overlay (transparent, cottage visible behind) -->
@@ -44,65 +44,115 @@
 
   <div class="modal about">
     <button class="modal-exit-button">✕</button>
-    <h2>About</h2>
-    <p>Hi, I'm Megan! I work on AI/ML and cloud solutions at Amazon Web Services, helping enterprise organisations across ASEAN build and scale intelligent systems.</p>
-    <p>I studied Information Systems at Singapore Management University with a focus on Business Analytics and Cloud Solutions, and spent a semester at Universität St.Gallen in Switzerland — which is where my love for crazy adventures started.</p>
-    <p>Step into my isometric room and let's chat about AI, cloud architecture, pre-sales engineering and travels!</p>
+    <div class="modal-content">
+      <h2>About</h2>
+      <p>Hi, I'm Megan! I work on AI/ML and cloud solutions at Amazon Web Services, helping enterprise organisations across ASEAN build and scale intelligent systems.</p>
+      <p>Step into my isometric room and let's chat about AI, cloud architecture, pre-sales engineering and travels!</p>
+    </div>
   </div>
 
+  <!-- Experience modal (desk hotspot) — compact cards -->
   <div class="modal experience">
-    <button class="modal-exit-button">✕</button>
-    <h2>Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="when">Sep 2025 — present</span>
-        <strong>Delivery Consultant – AI/ML</strong>
-        <em>Amazon Web Services</em>
+    <button class="modal-exit-button" aria-label="Close">✕</button>
+    <div class="modal-content">
+      <h2>Experience</h2>
+      <div class="exp-cards">
+        <div class="exp-card">
+          <span class="exp-when">2025 — now</span>
+          <strong>Delivery Consultant – AI/ML</strong>
+          <ul>
+            <li>Architected real-time data platforms, agentic AI systems and landing zones for ASEAN enterprises</li>
+            <li>Delivered end-to-end in highly regulated, air-gapped environments</li>
+            <li>Secured multi-currency 5–6 figure engagements from PoC to production</li>
+          </ul>
+          <div class="tags"><span>Amazon Bedrock</span><span>Agentic AI</span><span>Terraform</span><span>Data Lakehouse</span><span>Networking</span></div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-when">2025</span>
+          <strong>Solutions Architect</strong>
+          <ul>
+            <li>Implemented production-ready GenAI solutions with consistent 5.0 CSAT from senior executives</li>
+            <li>Contributed to $XX M+ pipeline across AI/ML services</li>
+            <li>Delivered enablement workshops to 500+ students, with average cloud proficiency from 10% to 100%</li>
+            <li>Earned AWS Golden Jacket and joined AI/ML Technical Field Community</li>
+          </ul>
+          <div class="tags"><span>Technical Advisory</span><span>Architecture Reviews</span><span>Large Language Models (LLMs)</span></div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-when">2024</span>
+          <strong>Business Analyst</strong>
+          <ul>
+            <li>Translated on-prem-to-cloud migration requirements into design specifications</li>
+            <li>Designed test suites achieving 100% pass rates for a carpark pricing engine within 1-min SLA</li>
+          </ul>
+          <div class="tags"><span>SQL</span><span>AWS Cloud</span><span>Quality Assurance and Testing</span><span>Agile Scrum</span></div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-when">2023</span>
+          <strong>Frontend Engineer</strong>
+          <ul>
+            <li>Built a Speech-to-Text module for a Natural Language Processing portal</li>
+            <li>Refactored codebase into reusable TypeScript components</li>
+          </ul>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>REST APIs</span></div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-when">2023</span>
+          <strong>Data Scientist</strong>
+          <ul>
+            <li>Developed a novel ML algorithm to predict airspace congestion with Ph.D. researchers across Europe</li>
+            <li>Processed large-scale aviation data and synthesised insights from 10+ academic papers</li>
+          </ul>
+          <div class="tags"><span>Big Data</span><span>Machine Learning</span><span>Research</span></div>
+        </div>
       </div>
-      <div class="timeline-item">
-        <span class="when">Feb 2025 — Sep 2025</span>
-        <strong>Solutions Architect</strong>
-        <em>Amazon Web Services</em>
+    </div>
+  </div>
+
+  <div class="modal projects">
+    <button class="modal-exit-button" aria-label="Close">✕</button>
+    <div class="modal-content">
+      <h2>Side Quests</h2>
+    <p>Things I tinker with after-hours — small builds, experiments, and the odd weekend rabbit hole.</p>
+    <div class="project-list">
+      <div class="project-card">
+        <h3>SA Genie</h3>
+        <p>Real-time meeting assistant for Amazon Chime: an Electron overlay captures audio, an AWS CDK backend transcribes and runs it through Bedrock, and live insights stream back over WebSockets.</p>
+        <div class="tags"><span>AWS CDK</span><span>Bedrock</span><span>Lambda</span><span>WebSockets</span><span>Electron</span><span>TypeScript</span></div>
+        <a href="https://github.com/weilunteo/aws-sa-genie" target="_blank" rel="noreferrer">GitHub →</a>
       </div>
-      <div class="timeline-item">
-        <span class="when">Jun 2024 — Dec 2024</span>
-        <strong>Business Analyst</strong>
-        <em>Accenture</em>
+      <div class="project-card">
+        <h3>Pet projects — coming soon</h3>
+        <p>Currently exploring multi-agent patterns with Strands and Bedrock — small agents that plan, call tools, and hand off work. New write-ups/demos will land here as they ship.</p>
+        <div class="tags"><span>Strands Agents</span><span>Bedrock</span><span>Tool use</span><span>Python</span></div>
       </div>
-      <div class="timeline-item">
-        <span class="when">Jul 2023 — Dec 2023</span>
-        <strong>Frontend Engineer</strong>
-        <em>Home Team Science & Technology Agency (HTX)</em>
-      </div>
-      <div class="timeline-item">
-        <span class="when">Jan 2023 — Jun 2023</span>
-        <strong>Data Scientist</strong>
-        <em>The Boeing Company</em>
-      </div>
+    </div>
     </div>
   </div>
 
   <div class="modal education">
     <button class="modal-exit-button">✕</button>
-    <h2>Education</h2>
+    <div class="modal-content">
+      <h2>Education</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <span class="when">Aug 2021 — Dec 2024</span>
         <strong>B.Sc. Information Systems</strong>
         <em>Singapore Management University</em>
         <p>Business Analytics & Digitalisation and Cloud Solution</p>
       </div>
       <div class="timeline-item">
-        <span class="when">Feb 2024 — May 2024</span>
         <strong>Spring Exchange Semester</strong>
         <em>Universität St.Gallen (HSG), Switzerland</em>
+        <p>Traded lecture halls for alpine hikes and crazy adventures across 20 countries.</p>
       </div>
+    </div>
     </div>
   </div>
 
   <div class="modal skills">
     <button class="modal-exit-button">✕</button>
-    <h2>Tech & Skills</h2>
+    <div class="modal-content">
+      <h2>Tech & Skills</h2>
     <div class="skill-group">
       <h3> Programming Languages</h3>
       <div class="tags"><span>Python</span><span>TypeScript</span><span>SQL</span></div>
@@ -121,32 +171,43 @@
     </div>
     <div class="skill-group">
       <h3>Certifications (13x AWS)</h3>
-      <div class="tags">
-        <span>Solutions Architect – Professional</span>
-        <span>DevOps Engineer – Professional</span>
-        <span>Advanced Networking – Specialty</span>
-        <span>Security – Specialty</span>
-        <span>ML – Specialty</span>
-        <span>GenAI Developer – Professional</span>
-        <span>ML Engineer – Associate</span>
-        <span>Data Engineer – Associate</span>
-        <span>Developer – Associate</span>
-        <span>SA – Associate</span>
-        <span>AI Practitioner</span>
-        <span>Cloud Practitioner</span>
+      <div class="tags credly-tags">
+        <a href="https://www.credly.com/badges/7247b7ad-877b-4d43-ba37-cd1b96710409" target="_blank" rel="noreferrer"><span>Solutions Architect – Professional</span></a>
+        <a href="https://www.credly.com/badges/48f4f235-43c7-4669-8646-f98f9025cbb6" target="_blank" rel="noreferrer"><span>DevOps Engineer – Professional</span></a>
+        <a href="https://www.credly.com/badges/336aeb91-8b9c-4842-964a-cf529ce9f457" target="_blank" rel="noreferrer"><span>Advanced Networking – Specialty</span></a>
+        <a href="https://www.credly.com/badges/d77f23a2-c628-44c6-93a5-80c4d9a57d58" target="_blank" rel="noreferrer"><span>Security – Specialty</span></a>
+        <a href="https://www.credly.com/badges/19150d6e-756c-44fe-8fb7-75b45aee773e" target="_blank" rel="noreferrer"><span>ML – Specialty</span></a>
+        <a href="https://www.credly.com/badges/9ab98a03-1d40-444a-b0e3-374e5d29783f" target="_blank" rel="noreferrer"><span>GenAI Developer – Professional</span></a>
+        <a href="https://www.credly.com/badges/a019eedb-63ce-4797-ac22-6dba929e90bb" target="_blank" rel="noreferrer"><span>ML Engineer – Associate</span></a>
+        <a href="https://www.credly.com/badges/fb5ba84e-bcf2-4129-9fbb-42194950eed6" target="_blank" rel="noreferrer"><span>Data Engineer – Associate</span></a>
+        <a href="https://www.credly.com/badges/72654d21-8606-4f3e-813c-c9801d9baf05" target="_blank" rel="noreferrer"><span>Developer – Associate</span></a>
+        <a href="https://www.credly.com/badges/dea49c1f-9e00-4cb7-b749-0850fa2f163f" target="_blank" rel="noreferrer"><span>SysOps Admin – Associate</span></a>
+        <a href="https://www.credly.com/badges/5d64bf22-2dd2-44be-9233-526fbd64a2f6" target="_blank" rel="noreferrer"><span>SA – Associate</span></a>
+        <a href="https://www.credly.com/badges/ca381764-3707-4d02-bda7-e706cbcb2b94" target="_blank" rel="noreferrer"><span>AI Practitioner</span></a>
+        <a href="https://www.credly.com/badges/343e71d6-ddf6-45be-a673-4f0eac15251d" target="_blank" rel="noreferrer"><span>Cloud Practitioner</span></a>
       </div>
+    </div>
     </div>
   </div>
 
   <div class="modal fun">
     <button class="modal-exit-button">✕</button>
-    <h2>Simple Joys</h2>
-    <p>Hiking mountain trails or disappearing somewhere your email can't find me. Big fan of slow travel, off-the-grid destinations, swimming laps to reset, and HIIT sessions to stay sharp.</p>
+    <div class="modal-content">
+      <h2>Simple Joys</h2>
+    <div class="polaroid-strip">
+      <div class="polaroid"><img src="/assets/1-Ch0S-PzX.jpg" alt="" onerror="this.style.display='none'" /><span>Alpine trail</span></div>
+      <div class="polaroid"><img src="/assets/2-DDKjFqS9.jpg" alt="" onerror="this.style.display='none'" /><span>Beach reset</span></div>
+      <div class="polaroid"><img src="/assets/3-Cfoj-I1K.jpg" alt="" onerror="this.style.display='none'" /><span>World wonder</span></div>
+      <div class="polaroid"><img src="/assets/4-CtrQAik1.jpg" alt="" onerror="this.style.display='none'" /><span>Snow therapy</span></div>
+    </div>
+    <p>Hiking mountain trails or disappearing somewhere your email can't find me. Big fan of slow travel to off-the-grid destinations, swimming laps to reset, and HIIT sessions to stay sharp.</p>
+    </div>
   </div>
 
   <div class="modal contact">
     <button class="modal-exit-button">✕</button>
-    <h2>Contact</h2>
+    <div class="modal-content">
+      <h2>Contact</h2>
     <p>Best place to reach me is by email or LinkedIn.</p>
     <div class="contact-links">
       <a href="mailto:p4tns_weilun@hotmail.com" aria-label="Email">
@@ -159,8 +220,8 @@
         <i class="fab fa-github"></i>
       </a>
     </div>
+    </div>
   </div>
 
-
-</body>
+  </body>
 </html>

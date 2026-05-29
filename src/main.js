@@ -34,8 +34,8 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.1;
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 1.2, 0);
-controls.minDistance = 6; controls.maxDistance = 22;
-controls.minPolarAngle = 0.3; controls.maxPolarAngle = Math.PI / 2.3;
+controls.minDistance = 6; controls.maxDistance = 28;
+controls.minPolarAngle = 0.15; controls.maxPolarAngle = Math.PI / 2.3;
 controls.enableDamping = true; controls.dampingFactor = 0.06;
 controls.enabled = false; controls.update();
 window.addEventListener("resize", () => {
@@ -133,6 +133,68 @@ ground.rotation.x=-Math.PI/2; ground.position.y=-0.01; ground.receiveShadow=true
 });
 // Flowers
 const flowers=[];
+// Cows (grazing in the meadow)
+const cowPositions = [[4.5, 3.5], [8, 5], [-8, 6], [10, -3], [-9, -5], [6, 8]];
+cowPositions.forEach(([cx, cz]) => {
+  const cow = new THREE.Group();
+  // Body
+  const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.25, 0.5, 8, 10), new THREE.MeshStandardMaterial({color:"#f5f5f0",roughness:0.9}));
+  body.rotation.z = Math.PI / 2; body.position.set(0, 0.35, 0); cow.add(body);
+  // Spots — 20 patches covering the whole body
+  const spotMat = new THREE.MeshStandardMaterial({color:"#1a1a1a",roughness:0.9});
+  const spots = [
+    [0.05, 0.45, 0.1, 0.14, 1.2, 0.3, 1.0],
+    [-0.18, 0.44, -0.08, 0.11, 1.0, 0.3, 0.9],
+    [0.15, 0.32, 0.2, 0.10, 0.9, 0.6, 0.4],
+    [-0.1, 0.3, 0.22, 0.08, 0.8, 0.5, 0.4],
+    [0.1, 0.33, -0.18, 0.12, 1.0, 0.5, 0.4],
+    [-0.2, 0.32, -0.15, 0.09, 0.8, 0.5, 0.5],
+    [-0.28, 0.4, 0.0, 0.13, 0.7, 0.35, 1.0],
+    [0.3, 0.38, 0.06, 0.07, 0.8, 0.4, 0.7],
+    [0.0, 0.48, -0.05, 0.10, 1.1, 0.25, 0.8],
+    [-0.3, 0.36, 0.12, 0.09, 0.9, 0.4, 0.6],
+    [0.22, 0.44, -0.05, 0.08, 0.7, 0.3, 0.9],
+    [-0.05, 0.3, -0.2, 0.10, 0.6, 0.5, 0.5],
+    [0.2, 0.3, -0.1, 0.07, 0.8, 0.5, 0.6],
+    [-0.15, 0.46, 0.15, 0.09, 1.0, 0.25, 0.7],
+    [0.28, 0.35, 0.15, 0.08, 0.7, 0.5, 0.5],
+    [-0.32, 0.38, -0.08, 0.10, 0.8, 0.3, 0.8],
+    [0.08, 0.35, 0.22, 0.06, 0.9, 0.5, 0.4],
+    [-0.22, 0.42, 0.08, 0.08, 1.0, 0.3, 0.6],
+    [0.18, 0.46, 0.12, 0.07, 0.8, 0.3, 0.8],
+    [-0.08, 0.34, 0.0, 0.11, 1.1, 0.4, 0.7],
+  ];
+  spots.forEach(([sx, sy, sz, r, scx, scy, scz]) => {
+    const s = new THREE.Mesh(new THREE.SphereGeometry(r, 6, 6), spotMat);
+    s.position.set(sx, sy, sz); s.scale.set(scx, scy, scz); cow.add(s);
+  });
+  // Head
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.14, 8, 8), new THREE.MeshStandardMaterial({color:"#f5f5f0",roughness:0.9}));
+  head.position.set(0.42, 0.38, 0); cow.add(head);
+  // Snout
+  const snout2 = new THREE.Mesh(new THREE.SphereGeometry(0.07, 6, 6), new THREE.MeshStandardMaterial({color:"#e8c8b0",roughness:0.9}));
+  snout2.position.set(0.52, 0.34, 0); cow.add(snout2);
+  // Ears
+  const earMat = new THREE.MeshStandardMaterial({color:"#f5f5f0",roughness:0.9});
+  const ce1 = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6), earMat);
+  ce1.position.set(0.4, 0.48, 0.1); cow.add(ce1);
+  const ce2 = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6), earMat);
+  ce2.position.set(0.4, 0.48, -0.1); cow.add(ce2);
+  // Legs
+  const legMat = new THREE.MeshStandardMaterial({color:"#f5f5f0",roughness:0.9});
+  [[-0.2, 0.1, 0.1], [-0.2, 0.1, -0.1], [0.2, 0.1, 0.1], [0.2, 0.1, -0.1]].forEach(([lx, ly, lz]) => {
+    const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.2, 6), legMat);
+    leg.position.set(lx, ly, lz); cow.add(leg);
+  });
+  // Tail
+  const tailC = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.015, 0.3, 6), spotMat);
+  tailC.position.set(-0.4, 0.35, 0); tailC.rotation.z = 0.6; cow.add(tailC);
+  cow.position.set(cx, 0, cz);
+  cow.rotation.y = Math.random() * Math.PI * 2;
+  cow.scale.setScalar(0.6 + Math.random() * 0.2);
+  cow.castShadow = true;
+  scene.add(cow);
+});
 for(let i=0;i<80;i++){const a=Math.random()*Math.PI*2,r=5+Math.random()*14,x=Math.cos(a)*r,z=Math.sin(a)*r;
   if(Math.abs(x)<4.5&&Math.abs(z)<4)continue;
   const fg=new THREE.Group();
@@ -190,7 +252,7 @@ scene.add(poolGroup);
 
 // ─── Hotspot system ───
 const rayObjs=[],hitMap=new Map();
-function makeLabel(text,pos){
+function makeLabel(text,pos,parent=room){
   const c=document.createElement("canvas");c.width=256;c.height=64;const ctx=c.getContext("2d");
   ctx.fillStyle="rgba(255,248,220,0.92)";ctx.beginPath();ctx.roundRect(4,4,248,56,28);ctx.fill();
   ctx.strokeStyle="#5a3a2a";ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(4,4,248,56,28);ctx.stroke();
@@ -198,17 +260,33 @@ function makeLabel(text,pos){
   const tex=new THREE.CanvasTexture(c);
   const spriteMat=new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false,opacity:0.7});
   const s=new THREE.Sprite(spriteMat);
-  s.position.copy(pos); s.scale.set(1.6,0.4,1); room.add(s); return s;
+  s.position.copy(pos); s.scale.set(1.6,0.4,1); parent.add(s); return s;
 }
-function hotspot(mesh,modal,label,labelOff=0.6){
-  mesh.castShadow=true;mesh.receiveShadow=true;room.add(mesh);
+function hotspot(mesh,modal,label,labelOff=0.6,parent=room,opts={}){
+  mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);
+  // Compute bounding box AFTER mesh is positioned in world
   const b=new THREE.Box3().setFromObject(mesh),sz=b.getSize(new THREE.Vector3()),cn=b.getCenter(new THREE.Vector3());
   const hb=new THREE.Mesh(new THREE.BoxGeometry(sz.x*1.4,sz.y*1.6,sz.z*1.4),new THREE.MeshBasicMaterial({visible:false}));
-  hb.position.copy(cn); room.add(hb); rayObjs.push(hb);
-  const lp=cn.clone(); lp.y=b.max.y+labelOff;
-  const lb=makeLabel(label,lp);
-  hitMap.set(hb,{mesh,modal,lb,iScale:mesh.scale.clone(),iPos:mesh.position.clone()});
+  let lb;
+  if(opts.attachToMesh){
+    // Hitbox + label become children of the mesh group so they move together (e.g. floating clouds)
+    const localCenter = cn.clone().sub(mesh.position);
+    hb.position.copy(localCenter);
+    mesh.add(hb);
+    const lp = localCenter.clone(); lp.y = (b.max.y - mesh.position.y) + labelOff;
+    lb = makeLabel(label, lp, mesh);
+  } else {
+    hb.position.copy(cn);
+    parent.add(hb);
+    const lp=cn.clone(); lp.y=b.max.y+labelOff;
+    lb=makeLabel(label,lp,parent);
+  }
+  rayObjs.push(hb);
+  hitMap.set(hb,{mesh,modal,lb,hb,iScale:mesh.scale.clone(),iPos:mesh.position.clone(),attachedToMesh:!!opts.attachToMesh});
 }
+
+// ─── Pool hotspot (outside room) ───
+hotspot(poolGroup,"fun","Simple Joys",0.8,scene);
 
 // ─── DESK (Experience) — shifted nearer to bed ───
 const desk=new THREE.Group();
@@ -344,7 +422,7 @@ box(0.3,0.03,0.03,M.metal,[0,0.55,0.05],bikeFrame);
 bikeFrame.position.set(-0.5,0.0,-0.4);bikeFrame.rotation.y=0.3;
 gear.add(bikeFrame);
 gear.position.set(2.5,0.12,-1.8);
-hotspot(gear,"fun","Simple Joys");
+hotspot(gear,"projects","Side Quests");
 
 // ─── DOG (Skills) — sleeping curled up ───
 const dog=new THREE.Group();
@@ -460,6 +538,53 @@ cwH.position.set(-3.37,2.5,1.0);cwH.rotation.y=Math.PI/2;room.add(cwH);
 const cwV=new THREE.Mesh(new THREE.BoxGeometry(0.03,0.03,0.88),M.woodDk);
 cwV.position.set(-3.37,2.5,1.0);room.add(cwV);
 
+// ─── Experience Cloud-Mountains (outdoor hotspots) ───
+// Each experience is a fluffy cloud floating above its mountain — clickable
+const cloudMountains = [];
+const expData = [
+  // x, z (negative = behind room), peak height of the matching mountain, modal id, label
+  { x: -10, z: -14, h: 8,  modal: "exp-aws-da",    label: "AWS · AI/ML",  color: "#e85050" },
+  { x: -4,  z: -16, h: 11, modal: "exp-aws-sa",    label: "AWS · SA",     color: "#4a90d9" },
+  { x: 4,   z: -18, h: 13, modal: "exp-accenture", label: "Accenture",    color: "#8b5cf6" },
+  { x: 11,  z: -15, h: 9,  modal: "exp-htx",       label: "HTX",          color: "#10b981" },
+  { x: 16,  z: -17, h: 7,  modal: "exp-boeing",    label: "Boeing",       color: "#f59e0b" },
+];
+const cloudColors = ["#fafcff","#f0f6ff","#fff8f0","#f6f0ff","#f0fff6"];
+expData.forEach(({ x, z, h, modal, label, color }, idx) => {
+  const group = new THREE.Group();
+  // Cloud body — cluster of spheres
+  const cloudMat = new THREE.MeshStandardMaterial({ color: cloudColors[idx], roughness: 0.95, transparent: true, opacity: 0.95 });
+  const puffs = [
+    [0, 0, 0, 1.4],
+    [-1.0, -0.15, 0.25, 1.0],
+    [1.1, -0.1, -0.2, 1.05],
+    [0.4, 0.3, 0.4, 0.85],
+    [-0.45, 0.25, -0.35, 0.9],
+    [0.7, -0.2, 0.55, 0.75],
+    [-0.7, -0.15, -0.4, 0.7],
+  ];
+  puffs.forEach(([px, py, pz, s]) => {
+    const puff = new THREE.Mesh(new THREE.SphereGeometry(s, 12, 10), cloudMat);
+    puff.position.set(px, py, pz);
+    puff.scale.set(1.2, 0.7, 1.0);
+    group.add(puff);
+  });
+
+  // Position cloud in the sky — lower, between mountain peaks and room height
+  const cloudY = 4.5 + idx * 0.3;
+  const cloudZ = z + 4; // pull forward by 4 units
+  group.position.set(x, cloudY, cloudZ);
+  group.scale.setScalar(0.85);
+
+  group.userData.baseY = cloudY;
+  group.userData.floatOffset = idx * 1.3;
+  cloudMountains.push(group);
+
+  // Clouds are purely decorative — just add to scene
+  group.castShadow = true;
+  scene.add(group);
+});
+
 // ─── Theme toggle ───
 let isWinter=false;
 function toggleTheme(){
@@ -481,7 +606,7 @@ function toggleTheme(){
 }
 
 // ─── Modals ───
-const modals={about:document.querySelector(".modal.about"),experience:document.querySelector(".modal.experience"),education:document.querySelector(".modal.education"),skills:document.querySelector(".modal.skills"),fun:document.querySelector(".modal.fun"),contact:document.querySelector(".modal.contact"),photos:document.querySelector(".modal.photos")};
+const modals={about:document.querySelector(".modal.about"),experience:document.querySelector(".modal.experience"),education:document.querySelector(".modal.education"),skills:document.querySelector(".modal.skills"),fun:document.querySelector(".modal.fun"),contact:document.querySelector(".modal.contact"),photos:document.querySelector(".modal.photos"),projects:document.querySelector(".modal.projects")};
 const overlay=document.querySelector(".overlay");
 let isModalOpen=true;
 function showModal(cls){const m=modals[cls];if(!m)return;m.style.display="block";overlay.style.display="block";isModalOpen=true;controls.enabled=false;
@@ -496,8 +621,16 @@ function hideModal(m){isModalOpen=false;controls.enabled=true;
 const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-10,-10);
 let hovered=null;
 function hover(hb,on){const d=hitMap.get(hb);if(!d)return;gsap.killTweensOf(d.mesh.scale);gsap.killTweensOf(d.mesh.position);
-  if(on){gsap.to(d.mesh.scale,{x:d.iScale.x*1.08,y:d.iScale.y*1.08,z:d.iScale.z*1.08,duration:0.35,ease:"back.out(2)"});gsap.to(d.mesh.position,{y:d.iPos.y+0.12,duration:0.35,ease:"back.out(2)"});gsap.to(d.lb.material,{opacity:1,duration:0.2});}
-  else{gsap.to(d.mesh.scale,{x:d.iScale.x,y:d.iScale.y,z:d.iScale.z,duration:0.25,ease:"back.out(2)"});gsap.to(d.mesh.position,{y:d.iPos.y,duration:0.25,ease:"back.out(2)"});gsap.to(d.lb.material,{opacity:0.7,duration:0.3});}
+  if(on){
+    gsap.to(d.mesh.scale,{x:d.iScale.x*1.08,y:d.iScale.y*1.08,z:d.iScale.z*1.08,duration:0.35,ease:"back.out(2)"});
+    if(!d.attachedToMesh) gsap.to(d.mesh.position,{y:d.iPos.y+0.12,duration:0.35,ease:"back.out(2)"});
+    gsap.to(d.lb.material,{opacity:1,duration:0.2});
+  }
+  else{
+    gsap.to(d.mesh.scale,{x:d.iScale.x,y:d.iScale.y,z:d.iScale.z,duration:0.25,ease:"back.out(2)"});
+    if(!d.attachedToMesh) gsap.to(d.mesh.position,{y:d.iPos.y,duration:0.25,ease:"back.out(2)"});
+    gsap.to(d.lb.material,{opacity:0.7,duration:0.3});
+  }
 }
 function onClick(){if(isModalOpen)return;if(hovered){const d=hitMap.get(hovered);if(d&&d.modal)showModal(d.modal);}}
 window.addEventListener("mousemove",e=>{ptr.x=(e.clientX/sizes.width)*2-1;ptr.y=-(e.clientY/sizes.height)*2+1;});
@@ -510,28 +643,21 @@ const enterOv=document.querySelector(".enter-overlay"),enterBtn=document.querySe
 enterBtn.addEventListener("click",()=>{
   initAudio();if(backgroundMusic)backgroundMusic.play().then(()=>{isMuted=false;document.querySelector(".sound-off-svg").style.display="none";document.querySelector(".sound-on-svg").style.display="block";}).catch(()=>{});
   gsap.to(enterOv,{opacity:0,duration:0.7,ease:"power2.inOut",onComplete:()=>{enterOv.style.display="none";isModalOpen=false;controls.enabled=true;
-    const ms=Array.from(hitMap.values()).map(d=>d.mesh);ms.forEach(m=>m.scale.set(0,0,0));
-    ms.forEach((m,i)=>gsap.to(m.scale,{x:1,y:1,z:1,duration:0.5,delay:0.12*i,ease:"back.out(1.7)"}));
-    ms.forEach((m, i) => {
-      gsap.fromTo(m.scale,
+    const entries=Array.from(hitMap.values());
+    entries.forEach(d=>d.mesh.scale.set(0,0,0));
+    entries.forEach((d, i) => {
+      const s = d.iScale;
+      gsap.fromTo(d.mesh.scale,
         { x: 0, y: 0, z: 0 },
-{
-          x: 1,
-          y: 1,
-          z: 1,
+        {
+          x: s.x, y: s.y, z: s.z,
           duration: 0.5,
           delay: 0.12 * i,
           ease: "back.out(1.7)",
           onComplete: () => {
-            // one soft "settle bounce"
-            gsap.to(m.scale, {
-              x: 1.03,
-              y: 1.03,
-              z: 1.03,
-              duration: 0.25,
-              ease: "sine.out",
-              yoyo: true,
-              repeat: 1
+            gsap.to(d.mesh.scale, {
+              x: s.x * 1.03, y: s.y * 1.03, z: s.z * 1.03,
+              duration: 0.25, ease: "sine.out", yoyo: true, repeat: 1
             });
           }
         }
@@ -546,8 +672,13 @@ document.querySelector(".mute-toggle-button").addEventListener("click",toggleMut
 
 // ─── Render ───
 const clock=new THREE.Clock();
+let elapsed=0;
 (function render(){
-  const dt=clock.getDelta(); controls.update();
+  const dt=clock.getDelta(); elapsed+=dt; controls.update();
+  // Floating clouds — hitbox + label are children, so they bob together
+  cloudMountains.forEach(c=>{
+    c.position.y = c.userData.baseY + Math.sin(elapsed * 0.6 + c.userData.floatOffset) * 0.3;
+  });
   if(snowPts.visible){const p=snowGeo.attributes.position;for(let i=0;i<snowCount;i++){let y=p.getY(i)-snowSpd[i]*dt,x=p.getX(i)+Math.sin((y+i)*0.4)*0.002;if(y<0){y=12+Math.random()*2;x=(Math.random()-0.5)*35;}p.setX(i,x);p.setY(i,y);}p.needsUpdate=true;}
   if(!isModalOpen){ray.setFromCamera(ptr,camera);const hits=ray.intersectObjects(rayObjs);
     if(hits.length>0){const h=hits[0].object;if(h!==hovered){if(hovered)hover(hovered,false);hovered=h;hover(h,true);document.body.style.cursor="pointer";}}
@@ -562,4 +693,8 @@ document.querySelectorAll(".modal-exit-button").forEach((btn) => {
     if (!modal) return;
     hideModal(modal);
   });
+});
+overlay.addEventListener("click", () => {
+  const openModal = document.querySelector('.modal[style*="display: block"]');
+  if (openModal) hideModal(openModal);
 });
